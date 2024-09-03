@@ -14,6 +14,19 @@
   <body class="font-sans antialiased bg-surface">
     <%= render 'shared/navbar' %>
     <main class="container mx-auto mt-28 px-5">
+      <div id='messages'>
+        <% if notice %>
+          <div class="mb-4 p-4 bg-notice border border-notice-border text-notice-text rounded-lg">
+            <span><%= notice %></span>
+          </div>
+        <% end %>
+
+        <% if alert %>
+          <div class="mb-4 p-4 bg-alert border border-alert-border text-alert-text rounded-lg">
+            <span><%= alert %></span>
+          </div>
+        <% end %>
+      </div>
       <%= yield %>
     </main>
   </body>
