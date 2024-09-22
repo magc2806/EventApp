@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: '_event_app_session', httponly: true, secure: Rails.env.production?, same_site: :lax, expire_after: Rails.env.production? ? 24.hours : 1.week
