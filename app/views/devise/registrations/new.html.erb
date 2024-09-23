@@ -16,13 +16,11 @@
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
     </div>
 
-    <!-- Email Field -->
     <div class="field mt-5">
       <%= f.label :email, class: "block text-sm font-medium text-neutral" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
     </div>
 
-    <!-- Password Field -->
     <div class="field mt-5">
       <%= f.label :password, class: "block text-sm font-medium text-neutral" %>
       <% if @minimum_password_length %>
@@ -31,7 +29,6 @@
       <%= f.password_field :password, autocomplete: "new-password", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
     </div>
 
-    <!-- Password Confirmation Field -->
     <div class="field mt-5">
       <%= f.label :password_confirmation, class: "block text-sm font-medium text-neutral" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
