@@ -10,9 +10,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#791BCC',       // Main color
-        accent: '#DB1F18',        // Accent   color
-        neutral: '#B2ADB8',       // Neutral color
+        primary: '#A909ED',       // Main color
+        'primary-hover': '#791BCC',
+        accent: '#DB1F18',
+        'accent-hover': '#C21814',        // Accent   color
+        neutral: '#746982',
+        'neutral-hover': '#A909ED',        // Neutral color
         surface: '#F5F5F5',
         notice: {                 // Notice (success) color scheme
           DEFAULT: '#D1FAE5',     // Light green background
