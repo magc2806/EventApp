@@ -5,14 +5,12 @@
     <div class="flex space-x-6">
       <%= link_to 'Home', root_path, class: 'text-neutral hover:text-primary'%>
       <% if user_signed_in? %>
+        <%= link_to 'My profile', edit_user_registration_path, class: 'text-neutral hover:text-primary' %>
         <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'text-neutral hover:text-primary'%>
       <%else%>
         <%= link_to 'Login', new_user_session_path, class: 'text-neutral hover:text-primary' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'text-neutral hover:text-primary' %>
       <%end%>
-      <a href="#" class="text-neutral hover:text-primary">Features</a>
-      <a href="#" class="text-neutral hover:text-primary">Pricing</a>
-      <a href="#" class="text-neutral hover:text-primary">Contact</a>
     </div>
   </div>
 </nav>

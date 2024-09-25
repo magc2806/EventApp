@@ -1,43 +1,62 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="text-4xl font-extrabold text-primary text-center mb-8">Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "space-y-6") do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="field">
+      <%= f.label :email, class: "block text-sm font-medium text-neutral" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div class="text-sm text-accent mt-2">
+        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+      </div>
+    <% end %>
+
+    <div class="field mt-5">
+      <%= f.label :first_name, class: "block text-sm font-medium text-neutral" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="field mt-5">
+      <%= f.label :last_name, class: "block text-sm font-medium text-neutral" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "text-neutral mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="field mt-5">
+      <%= f.label :password, class: "block text-sm font-medium text-neutral" %>
+      <em class="text-xs text-neutral">(leave blank if you don't want to change it)</em>
+      <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+      <% if @minimum_password_length %>
+        <em class="text-xs text-neutral mt-2 block"><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field mt-5">
+      <%= f.label :password_confirmation, class: "block text-sm font-medium text-neutral" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="field mt-5">
+      <%= f.label :current_password, class: "block text-sm font-medium text-neutral" %>
+      <em class="text-xs text-gray-600">(we need your current password to confirm your changes)</em>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border border-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="actions mt-5">
+      <%= f.submit "Update", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <h3 class="text-2xl font-bold text-accent mt-8">Cancel my account</h3>
+  <div class="text-sm text-neutral mt-2">
+    Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "mt-2 text-accent hover:text-accent-hover underline" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mt-5">
+    <%= link_to "Back", :back, class: "text-neutral hover:text-neutral-hover underline" %>
   </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
