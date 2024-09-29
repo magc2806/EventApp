@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :bigint           not null, primary key
+#  archive     :boolean          default(FALSE)
+#  public      :boolean          default(FALSE)
+#  name        :string           not null
+#  description :text             not null
+#  event_date  :date             not null
+#  manager_id  :bigint           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  archive: false
+  public: false
+  name: MyString
+  description: MyText
+  event_date: 2024-09-23
+  user: one
+
+two:
+  archive: false
+  public: false
+  name: MyString
+  description: MyText
+  event_date: 2024-09-23
+  user: two

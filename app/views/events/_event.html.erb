@@ -1,0 +1,34 @@
+<%= turbo_frame_tag event do%>
+  <div id="<%= dom_id event %>">
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Archive:</strong>
+      <%= event.archive %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Public:</strong>
+      <%= event.public %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Name:</strong>
+      <%= event.name %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= event.description %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Event date:</strong>
+      <%= event.event_date %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">User:</strong>
+      <%= event.organizer_id %>
+    </p>
+
+  </div>
+<%end%>

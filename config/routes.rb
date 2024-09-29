@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :events
   devise_for :users, controllers: { sessions: 'users/sessions' }
   get 'welcome/index'
   mount Sidekiq::Web => '/sidekiq'
