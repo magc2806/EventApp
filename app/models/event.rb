@@ -14,5 +14,5 @@
 #
 class Event < ApplicationRecord
   belongs_to :organizer, foreign_key: :organizer_id, class_name: 'User'
-  validates :name, :description, :event_date, presence: :true
+  validates :name, :description, :event_date, presence: true
 end
