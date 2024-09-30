@@ -1,19 +1,25 @@
-<div class="w-full">
+<div class="w-full px-4">
   <% content_for :title, "Events" %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Events</h1>
-    <%= link_to "New event", new_event_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium", data: { turbo_frame: dom_id(Event.new) } %>
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="font-bold text-4xl text-primary">Events</h1>
+    <%= link_to "New event", new_event_path, class: "rounded-lg py-2 px-4 bg-primary text-white font-medium hover:bg-primary-hover transition", data: { turbo_frame: dom_id(Event.new) } %>
   </div>
 
-  <%= turbo_frame_tag Event.new %>
+  <%= turbo_frame_tag dom_id(Event.new)%>
 
-  <div id="events" class="min-w-full">
-    <% @events.each do |event| %>
-      <%= render event %>
-      <p>
-        <%= link_to "Show this event", event, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
+  <div class="w-full bg-table-header p-3 rounded-t-lg shadow-md grid grid-cols-5 gap-4 font-semibold text-gray-700">
+    <div>Name</div>
+    <div>Description</div>
+    <div>Event Date</div>
+    <div>Organizer</div>
+    <div class='flex justify-center items-center'>Actions</div>
   </div>
+
+    <div class="w-full bg-table-row rounded-b-lg shadow-md divide-y divide-gray-200">
+      <%=turbo_frame_tag 'events' do%>
+        <% @events.each do |event| %>
+          <%= render event %>
+        <% end %>
+      <%end%>
+    </div>
 </div>

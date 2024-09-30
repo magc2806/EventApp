@@ -24,4 +24,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable
 
   has_many :events, inverse_of: :organizer, dependent: :destroy
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
 end

@@ -1,8 +1,14 @@
 require "test_helper"
+require "debug"
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
+  fixtures :users, :events
+
   setup do
-    @event = events(:one)
+    @user = users(:one) # Load user fixture
+    #sign_in @user # Assuming Devise helper is available to log in the user
+    @event = events(:one) # Load event fixture
+    #@event.update!(organizer: @user) # Explicitly assign user as the organizer
   end
 
   test "should get index" do

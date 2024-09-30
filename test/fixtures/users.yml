@@ -1,0 +1,15 @@
+one:
+  id: 1
+  first_name: 'one'
+  last_name: 'one'
+  email: user_one@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.zone.now %>
+
+two:
+  id: 2
+  first_name: 'two'
+  last_name: 'two'
+  email: user_two@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.zone.now %>
