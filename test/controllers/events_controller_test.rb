@@ -5,10 +5,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   fixtures :users, :events
 
   setup do
-    @user = users(:one) # Load user fixture
-    #sign_in @user # Assuming Devise helper is available to log in the user
-    @event = events(:one) # Load event fixture
-    #@event.update!(organizer: @user) # Explicitly assign user as the organizer
+    @event = events(:one)
   end
 
   test "should get index" do
