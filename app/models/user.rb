@@ -5,7 +5,6 @@
 #  id                     :bigint           not null, primary key
 #  first_name             :string           not null
 #  last_name              :string           not null
-#  age                    :integer          not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -23,4 +22,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :timeoutable
+
+  has_many :events, inverse_of: :organizer, dependent: :destroy
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
 end

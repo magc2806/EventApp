@@ -5,6 +5,7 @@
     <div class="flex space-x-6">
       <%= link_to 'Home', root_path, class: 'text-neutral hover:text-primary'%>
       <% if user_signed_in? %>
+        <%= link_to 'Events', events_path, class: 'text-neutral hover:text-primary' %>
         <%= link_to 'My profile', edit_user_registration_path, class: 'text-neutral hover:text-primary' %>
         <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'text-neutral hover:text-primary'%>
       <%else%>
