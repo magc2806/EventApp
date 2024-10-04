@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = current_user.events
   end
 
   # GET /events/1 or /events/1.json
@@ -16,8 +16,7 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit;end
 
   # POST /events or /events.json
   def create
@@ -37,10 +36,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to event_url(@event), notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@event, partial: 'event', locals: { event: @event }) }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
