@@ -2,10 +2,8 @@
   <% content_for :title, "Events" %>
   <div class="flex justify-between items-center mb-6">
     <h1 class="font-bold text-4xl text-primary">Events</h1>
-    <%= link_to "New event", new_event_path, class: "rounded-lg py-2 px-4 bg-primary text-white font-medium hover:bg-primary-hover transition", data: { turbo_frame: dom_id(Event.new) } %>
+    <%= link_to "New event", new_event_path, class: "rounded-lg py-2 px-4 bg-primary text-white font-medium hover:bg-primary-hover transition", data: { turbo_frame: 'turbo_modal' } %>
   </div>
-
-  <%= turbo_frame_tag dom_id(Event.new)%>
 
   <div class="w-full bg-table-header p-3 rounded-t-lg shadow-md grid grid-cols-5 gap-4 font-semibold text-gray-700">
     <div>Name</div>

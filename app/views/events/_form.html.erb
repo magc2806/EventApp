@@ -1,55 +1,42 @@
-<div data-controller="modal" data-action="turbo:submit-end->modal#close">
-  <div data-modal-target="modal" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-      <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
-        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-xl w-full">
-          <div class="bg-white px-6 py-5">
-            <div class="text-center sm:text-left w-full">
-              <h5 class="text-2xl font-bold text-primary">Create New Event</h5>
-              <%= form_with(model: event, class: "space-y-6 mt-6 max-w-md mx-auto") do |form| %>
-                <% if event.errors.any? %>
-                  <div id="error_explanation" class="bg-error text-error-text border border-error px-4 py-3 font-medium rounded-lg">
-                    <h3 class="text-lg font-bold"><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h3>
-                    <ul class="list-disc pl-5 mt-2">
-                      <% event.errors.each do |error| %>
-                        <li><%= error.full_message %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-
-                <div class="flex flex-col">
-                  <%= form.label :name, class: "text-neutral font-medium mb-1" %>
-                  <%= form.text_field :name, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
-                </div>
-
-                <div class="flex flex-col">
-                  <%= form.label :description, class: "text-neutral font-medium mb-1" %>
-                  <%= form.text_area :description, rows: 3, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
-                </div>
-
-                <div class="flex flex-col">
-                  <%= form.label :event_date, class: "text-neutral font-medium mb-1" %>
-                  <%= form.date_field :event_date, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
-                </div>
-
-                <div class="flex items-center mt-2">
-                  <%= form.check_box :public, class: "h-5 w-5 text-primary focus:ring-primary focus:border-primary border-neutral rounded" %>
-                  <%= form.label :public, class: "ml-2 text-primary font-medium" %>
-                </div>
-
-                <div class="flex justify-end space-x-3 mt-6">
-                  <button type="button" data-action='click->modal#close' class="rounded-lg px-4 py-2 bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition">
-                    Cancel
-                  </button>
-                  <%= form.submit "Submit", class: "rounded-lg px-4 py-2 bg-primary text-white font-medium hover:bg-primary-hover transition" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+<div class="text-center sm:text-left w-full">
+  <h5 class="text-2xl font-bold text-primary"> <%= event.persisted? ? 'Update event' : 'Create event' %> </h5>
+  <%= form_with(model: event, class: "space-y-6 mt-6 max-w-md mx-auto") do |form| %>
+    <% if event.errors.any? %>
+      <div id="error_explanation" class="bg-error text-error-text border border-error px-4 py-3 font-medium rounded-lg">
+        <h3 class="text-lg font-bold"><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h3>
+        <ul class="list-disc pl-5 mt-2">
+          <% event.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
       </div>
+    <% end %>
+
+    <div class="flex flex-col">
+      <%= form.label :name, class: "text-neutral font-medium mb-1" %>
+      <%= form.text_field :name, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
     </div>
-  </div>
+
+    <div class="flex flex-col">
+      <%= form.label :description, class: "text-neutral font-medium mb-1" %>
+      <%= form.text_area :description, rows: 3, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= form.label :event_date, class: "text-neutral font-medium mb-1" %>
+      <%= form.date_field :event_date, class: "block w-full px-3 py-2 border-neutral text-neutral rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="flex items-center mt-2">
+      <%= form.check_box :public, class: "h-5 w-5 text-primary focus:ring-primary focus:border-primary border-neutral rounded" %>
+      <%= form.label :public, class: "ml-2 text-primary font-medium" %>
+    </div>
+
+    <div class="flex justify-end space-x-3 mt-6">
+      <button type="button" data-action='click->modal#close' class="rounded-lg px-4 py-2 bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition">
+        Cancel
+      </button>
+      <%= form.submit "Submit", class: "rounded-lg px-4 py-2 bg-primary text-white font-medium hover:bg-primary-hover transition" %>
+    </div>
+  <% end %>
 </div>
