@@ -1,0 +1,20 @@
+<%= render 'shared/turbo_modal' do%>
+  <div class="text-center sm:text-center w-full">
+    <%if @event.in_future? %>
+      <h5 class="text-neutral"> Are you sure you want to delete the event? </h5>
+      <div class="mt-8 flex justify-center items-center space-x-2">
+        <button type="button" data-action='click->modal#close' class="rounded-lg py-1 px-3 bg-table-button-neutral text-primary font-medium hover:bg-table-button-neutral-hover transition">
+          Cancel
+        </button>
+        <%= button_to "Delete", @event, method: :delete, class: "rounded-lg py-1 px-3 bg-table-button-red text-table-text-red font-medium hover:bg-table-button-red-hover hover:text-white transition", data: { action: 'click->modal#close' } %>
+      </div>
+    <%else%>
+      <h5 class="text-error-text"> Events in the past can not be deleted </h5>
+      <div class="mt-8 flex justify-center items-center space-x-2">
+        <button type="button" data-action='click->modal#close' class="rounded-lg py-1 px-3 bg-table-button-neutral text-primary font-medium hover:bg-table-button-neutral-hover transition">
+          Cancel
+        </button>
+      </div>
+    <%end%>
+  </div>
+<%end%>

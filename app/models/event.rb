@@ -15,4 +15,8 @@
 class Event < ApplicationRecord
   belongs_to :organizer, foreign_key: :organizer_id, class_name: 'User'
   validates :name, :description, :event_date, presence: true
+
+  def in_future?
+    event_date > Time.now.to_date
+  end
 end

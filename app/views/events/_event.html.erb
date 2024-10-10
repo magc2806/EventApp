@@ -1,5 +1,5 @@
 <%= turbo_frame_tag event do %>
-  <div id="<%= dom_id event %>" class="w-full grid grid-cols-5 gap-4 p-3 items-center hover:bg-table-row-hover transition rounded-lg">
+  <div class="w-full grid grid-cols-5 gap-4 p-3 items-center hover:bg-table-row-hover transition rounded-lg">
     <div class="text-neutral font-medium text-sm">
       <%= event.name %>
     </div>
@@ -18,7 +18,7 @@
 
     <div class="flex justify-center items-center space-x-2">
       <%= link_to "Edit", edit_event_path(event), data: { turbo_frame: 'turbo_modal' }, class: "rounded-lg py-1 px-3 bg-table-button-neutral text-primary font-medium hover:bg-table-button-neutral-hover transition" %>
-      <%= link_to "Delete", event, method: :delete, data: { confirm: "Are you sure?" }, class: "rounded-lg py-1 px-3 bg-table-button-red text-table-text-red font-medium hover:bg-table-button-red-hover hover:text-white transition" %>
+      <%= link_to "Delete", confirm_delete_event_path(event), data: { turbo_frame: 'turbo_modal' }, class: "rounded-lg py-1 px-3 bg-table-button-red text-table-text-red font-medium hover:bg-table-button-red-hover hover:text-white transition" %>
     </div>
   </div>
 <% end %>
