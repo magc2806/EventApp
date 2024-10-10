@@ -1,7 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    member do
+      get 'confirm_delete', to: 'events#confirm_delete'
+    end
+  end
   devise_for :users, controllers: { sessions: 'users/sessions' }
   get 'welcome/index'
   mount Sidekiq::Web => '/sidekiq'
