@@ -1,5 +1,5 @@
-<%= turbo_stream.replace('turbo_notifications') do%>
-  <div id="turbo_notifications">
+<%= turbo_stream.replace('messages') do%>
+  <div id="messages">
     <%flash.each do |type, message| %>
       <div data-controller="notifications" data-notifications-target="container" class="fixed top-4 left-1/2 transition delay-100 transform -translate-x-1/2 max-w-sm w-full z-50 p-4 rounded-lg border <%= turbo_notification_classes(type) %>">
         <div class="flex justify-between items-center">

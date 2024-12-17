@@ -1,1 +1,2 @@
 <%= turbo_stream.append('events', partial: 'events/event', locals: { event: @event })%>
+<%= render "shared/turbo_notifications" %>
